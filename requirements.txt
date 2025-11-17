@@ -1,0 +1,11 @@
+joblib
+matplotlib
+numpy
+opencv-python-headless
+pandas
+scikit-learn
+scipy
+streamlit
+pillow
+spacy
+tensorflow-cpu
