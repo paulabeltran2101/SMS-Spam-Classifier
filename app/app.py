@@ -68,8 +68,8 @@ with col1:
             st.info(f"Probability: {prob*100:.2f}%")
 
             # Original message
-                st.markdown("**Evaluated message:**")
-                st.write(user_input)
+            st.markdown("**Evaluated message:**")
+            st.write(user_input)
 
 with col2:
     st.image("images/spam.jng", caption="Spam Detection", use_column_width=True)
