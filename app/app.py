@@ -20,7 +20,7 @@ st.markdown("Enter a SMS message below to predict whether it is SPAM or HAM.")
 # 2️⃣ Load resources
 # -----------------------------
 @st.cache_resource
-def load_tokenizer(path="tokenizer/tokenizer.h5"):
+def load_tokenizer(path="tokenizer/tokenizer.pkl"):
     with open(path, "rb") as f:
         return pickle.load(f)
 
