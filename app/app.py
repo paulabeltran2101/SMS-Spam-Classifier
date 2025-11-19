@@ -5,20 +5,92 @@ from tensorflow.keras.models import load_model
 from utils.clean_text_light import clean_text_light
 from utils.preprocess_text import preprocess_text
 
-# -----------------------------
-# Custom CSS for background
-# -----------------------------
-page_bg = """
-<style>
-[data-testid="stAppViewContainer"] {
-    background-color: #f7f7f7;
-}
-[data-testid="stSidebar"] {
-    background-color: #ffffff;
-}
-</style>
-"""
-st.markdown(page_bg, unsafe_allow_html=True)
+st.markdown("""
+    <style>
+
+        /* --------------------------- */
+        /* 🔤 GLOBAL FONT (Montserrat) */
+        /* --------------------------- */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+        html, body, [class*="css"] {
+            font-family: 'Montserrat', sans-serif !important;
+        }
+
+        /* -------------------------------------------------- */
+        /* 🎨 APP BACKGROUND (light orange)                   */
+        /* -------------------------------------------------- */
+        .stApp {
+            background-color: #FFEFD5;  /* Light peach / pale orange */
+        }
+
+        /* -------------------------------------------------- */
+        /* 🎨 SIDEBAR BACKGROUND (light blue)                 */
+        /* -------------------------------------------------- */
+        section[data-testid="stSidebar"] {
+            background-color: #E0F0FF !important;
+        }
+
+        /* -------------------------------------------------- */
+        /* ✨ BOLD TITLE                                      */
+        /* -------------------------------------------------- */
+        h1 {
+            font-weight: 700 !important;
+        }
+
+        /* -------------------------------------------------- */
+        /* 🔘 BUTTON STYLING                                 */
+        /* -------------------------------------------------- */
+        .stButton>button {
+            background-color: #4A90E2 !important;
+            color: white !important;
+            border-radius: 10px !important;
+            padding: 0.6em 1.4em !important;
+            border: none !important;
+            font-weight: 600 !important;
+            transition: all 0.2s ease-in-out !important;
+        }
+
+        .stButton>button:hover {
+            background-color: #357ABD !important;
+            transform: translateY(-2px);
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+        }
+
+        /* -------------------------------------------------- */
+        /* 🃏 CARD SHADOWS (containers like success/error)     */
+        /* -------------------------------------------------- */
+        div[data-testid="stAlert"] {
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* -------------------------------------------------- */
+        /* 📦 RESULT BOXES (Markdown blocks)                  */
+        /* -------------------------------------------------- */
+        .stMarkdown {
+            padding: 10px 15px;
+            border-radius: 10px;
+        }
+
+        /* -------------------------------------------------- */
+        /* ⌨️ TEXTAREA STYLE                                  */
+        /* -------------------------------------------------- */
+        textarea {
+            background-color: #FFFFFF !important;
+            border-radius: 8px !important;
+            border: 1px solid #BBBBBB !important;
+            padding: 10px !important;
+        }
+
+        textarea:focus {
+            border-color: #4A90E2 !important;
+            box-shadow: 0px 0px 6px rgba(74, 144, 226, 0.5);
+        }
+
+    </style>
+""", unsafe_allow_html=True)
+
 
 # -----------------------------
 # 1️⃣ Page configuration
@@ -28,6 +100,7 @@ st.set_page_config(
     layout="wide",
 )
 
+st.markdown(""" <style> ... </style> """, unsafe_allow_html=True)
 st.markdown("## **📨 SMS Spam Classifier**")
 st.markdown("Enter your SMS message to find out whether it is SPAM or HAM.")
 
