@@ -6,6 +6,21 @@ from utils.clean_text_light import clean_text_light
 from utils.preprocess_text import preprocess_text
 
 # -----------------------------
+# Custom CSS for background
+# -----------------------------
+page_bg = """
+<style>
+[data-testid="stAppViewContainer"] {
+    background-color: #f7f7f7;
+}
+[data-testid="stSidebar"] {
+    background-color: #ffffff;
+}
+</style>
+"""
+st.markdown(page_bg, unsafe_allow_html=True)
+
+# -----------------------------
 # 1️⃣ Page configuration
 # -----------------------------
 st.set_page_config(
@@ -13,8 +28,16 @@ st.set_page_config(
     layout="wide",
 )
 
-st.title("📨 SMS Spam Classifier")
-st.markdown("Enter a SMS message below to predict whether it is SPAM or HAM.")
+st.markdown("## **📨 SMS Spam Classifier**")
+st.markdown("Enter your SMS message to find out whether it is SPAM or HAM.")
+
+# Awareness message
+st.info(
+    "**Why this matters:**\n\n"
+    "SMS spam can be more than annoying — it often includes phishing links, "
+    "scams, or malicious attempts to steal personal information. Detecting these "
+    "messages early helps protect your privacy, finances, and digital security."
+)
 
 # -----------------------------
 # 2️⃣ Load resources
