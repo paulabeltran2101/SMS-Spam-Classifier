@@ -72,7 +72,7 @@ with col1:
             st.write(user_input)
 
 with col2:
-    st.image("images/spam.jng", caption="Spam Detection", use_column_width=True)
+    st.image("images/spam.jpg", caption="Spam Detection", use_column_width=True)
 
 # -----------------------------
 # 5️⃣ Footer
