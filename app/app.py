@@ -15,7 +15,7 @@ st.set_page_config(
 )
 
 # -----------------------------
-# 2️⃣ Custom CSS for styling
+# 2️⃣ Custom CSS 
 # -----------------------------
 st.markdown("""
 <style>
@@ -53,14 +53,7 @@ section[data-testid="stSidebar"] {
     background-color: #E0F0FF !important;
 }
 
-/* --------------------------- */
-/* BOLD TITLE */
-h1 {
-    font-weight: 700 !important;
-    margin-top: 0.2rem !important;
-}
 
-/* --------------------------- */
 /* BUTTON STYLING */
 .stButton>button {
     background-color: #4A90E2 !important;
@@ -77,14 +70,13 @@ h1 {
     box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
 }
 
-/* --------------------------- */
-/* CARD SHADOWS (alerts) */
+
+/* (alerts) */
 div[data-testid="stAlert"] {
     border-radius: 10px;
     box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
 }
 
-/* --------------------------- */
 /* TEXTAREA STYLE */
 textarea {
     background-color: #FFFFFF !important;
@@ -134,7 +126,8 @@ model = load_lstm_model()
 with st.sidebar:
     st.header("💬 Enter your message")
     user_input = st.text_area("SMS message:", height=150)
-    threshold = st.slider("SPAM threshold", min_value=0.0, max_value=1.0, value=0.5, step=0.01)
+    threshold = st.slider(
+        "SPAM threshold", min_value=0.0, max_value=1.0, value=0.5, step=0.01)
     predict_button = st.button("Predict")
 
 # -----------------------------
@@ -158,12 +151,10 @@ if predict_button:
         else:
             st.success(f"Prediction: {pred_label}")
 
-        # Probability as bar
-        prob_percent = int(prob * 100)
+        # Probability bar
         st.markdown("**Probability of being SPAM:**")
-        st.progress(prob_percent)
-        st.markdown(f"<div style='color:#FF5733; font-weight:600;'>{prob*100:.2f}%</div>", unsafe_allow_html=True)
-
+        st.progress(int(prob * 100))
+        
         # Original message
         st.markdown("**Evaluated message:**")
         st.write(user_input)
