@@ -15,80 +15,45 @@ st.set_page_config(
 )
 
 # -----------------------------
-# 2️⃣ Custom CSS 
+#  🎨 CUSTOM CSS STYLING
 # -----------------------------
 st.markdown("""
-<style>
-/* --------------------------- */
-/* 🔤 GLOBAL FONT (Montserrat) */
-/* --------------------------- */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
-html, body, [class*="css"] {
-    font-family: 'Montserrat', sans-serif !important;
-}
+    <style>
+        /* Background color for the whole app */
+        .stApp {
+            background-color: #FFEFD5;  /* Light peach / pale orange */
+        }
 
-/* --------------------------- */
-/* 🎨 APP BACKGROUND - image with transparency */
-/* --------------------------- */
-.stApp {
-    /* background-image removed for testing */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    position: relative;
-}
-.stApp::before {
-    content: "";
-    position: absolute;
-    top:0; left:0;
-    width: 100%; height: 100%;
-    background-color: rgba(255,255,255,0.35);
-    z-index: -1;
-}
+        /* Sidebar background */
+        section[data-testid="stSidebar"] {
+            background-color: #E0F0FF !important;  /* Light blue */
+        }
 
-/* --------------------------- */
-/* Sidebar background */
-section[data-testid="stSidebar"] {
-    background-color: #E0F0FF !important;
-}
+        /* Bold title */
+        h1 {
+            font-weight: 700 !important;
+        }
+        
+        /* Text input area styling */
+        textarea {
+            background-color: #FFFFFF !important;
+            border: 1px solid #CCCCCC !important;
+        }
 
+        /* Buttons styling */
+        .stButton>button {
+            background-color: #4A90E2;
+            color: white;
+            border-radius: 8px;
+            padding: 0.6em 1.2em;
+            border: none;
+        }
 
-/* BUTTON STYLING */
-.stButton>button {
-    background-color: #4A90E2 !important;
-    color: white !important;
-    border-radius: 10px !important;
-    padding: 0.6em 1.4em !important;
-    border: none !important;
-    font-weight: 600 !important;
-    transition: all 0.2s ease-in-out !important;
-}
-.stButton>button:hover {
-    background-color: #357ABD !important;
-    transform: translateY(-2px);
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
-}
-
-
-/* (alerts) */
-div[data-testid="stAlert"] {
-    border-radius: 10px;
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
-}
-
-/* TEXTAREA STYLE */
-textarea {
-    background-color: #FFFFFF !important;
-    border-radius: 8px !important;
-    border: 1px solid #BBBBBB !important;
-    padding: 10px !important;
-}
-textarea:focus {
-    border-color: #4A90E2 !important;
-    box-shadow: 0px 0px 6px rgba(74,144,226,0.5);
-}
-</style>
+        .stButton>button:hover {
+            background-color: #357ABD;
+            color: white;
+        }
+    </style>
 """, unsafe_allow_html=True)
 
 # -----------------------------
