@@ -5,99 +5,6 @@ from tensorflow.keras.models import load_model
 from utils.clean_text_light import clean_text_light
 from utils.preprocess_text import preprocess_text
 
-st.markdown("""
-    <style>
-    div.block-container {
-    padding-top: 1rem !important;  /* Reduce space above title */
-    }
-
-    h1 {
-    margin-top: 0.2rem !important; /* Makes it even tighter */
-    }
-
-        /* --------------------------- */
-        /* 🔤 GLOBAL FONT (Montserrat) */
-        /* --------------------------- */
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
-
-        html, body, [class*="css"] {
-            font-family: 'Montserrat', sans-serif !important;
-        }
-
-        /* -------------------------------------------------- */
-        /* 🎨 APP BACKGROUND (light orange)                   */
-        /* -------------------------------------------------- */
-        .stApp {
-            background-color: #FFEFD5;  /* Light peach / pale orange */
-        }
-
-        /* -------------------------------------------------- */
-        /* 🎨 SIDEBAR BACKGROUND (light blue)                 */
-        /* -------------------------------------------------- */
-        section[data-testid="stSidebar"] {
-            background-color: #E0F0FF !important;
-        }
-
-        /* -------------------------------------------------- */
-        /* ✨ BOLD TITLE                                      */
-        /* -------------------------------------------------- */
-        h1 {
-            font-weight: 700 !important;
-        }
-
-        /* -------------------------------------------------- */
-        /* 🔘 BUTTON STYLING                                 */
-        /* -------------------------------------------------- */
-        .stButton>button {
-            background-color: #4A90E2 !important;
-            color: white !important;
-            border-radius: 10px !important;
-            padding: 0.6em 1.4em !important;
-            border: none !important;
-            font-weight: 600 !important;
-            transition: all 0.2s ease-in-out !important;
-        }
-
-        .stButton>button:hover {
-            background-color: #357ABD !important;
-            transform: translateY(-2px);
-            box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
-        }
-
-        /* -------------------------------------------------- */
-        /* 🃏 CARD SHADOWS (containers like success/error)     */
-        /* -------------------------------------------------- */
-        div[data-testid="stAlert"] {
-            border-radius: 10px;
-            box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
-        }
-
-        /* -------------------------------------------------- */
-        /* 📦 RESULT BOXES (Markdown blocks)                  */
-        /* -------------------------------------------------- */
-        .stMarkdown {
-            padding: 10px 15px;
-            border-radius: 10px;
-        }
-
-        /* -------------------------------------------------- */
-        /* ⌨️ TEXTAREA STYLE                                  */
-        /* -------------------------------------------------- */
-        textarea {
-            background-color: #FFFFFF !important;
-            border-radius: 8px !important;
-            border: 1px solid #BBBBBB !important;
-            padding: 10px !important;
-        }
-
-        textarea:focus {
-            border-color: #4A90E2 !important;
-            box-shadow: 0px 0px 6px rgba(74, 144, 226, 0.5);
-        }
-
-    </style>
-""", unsafe_allow_html=True)
-
 
 # -----------------------------
 # 1️⃣ Page configuration
@@ -107,7 +14,94 @@ st.set_page_config(
     layout="wide",
 )
 
-st.markdown(""" <style> ... </style> """, unsafe_allow_html=True)
+# -----------------------------
+# 2️⃣ Custom CSS for styling
+# -----------------------------
+st.markdown("""
+<style>
+/* --------------------------- */
+/* 🔤 GLOBAL FONT (Montserrat) */
+/* --------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+html, body, [class*="css"] {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+/* --------------------------- */
+/* 🎨 APP BACKGROUND - image with transparency */
+/* --------------------------- */
+.stApp {
+    background-image: url("images/spam.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    position: relative;
+}
+.stApp::before {
+    content: "";
+    position: absolute;
+    top:0; left:0;
+    width: 100%; height: 100%;
+    background-color: rgba(255,255,255,0.35);
+    z-index: -1;
+}
+
+/* --------------------------- */
+/* Sidebar background */
+section[data-testid="stSidebar"] {
+    background-color: #E0F0FF !important;
+}
+
+/* --------------------------- */
+/* BOLD TITLE */
+h1 {
+    font-weight: 700 !important;
+    margin-top: 0.2rem !important;
+}
+
+/* --------------------------- */
+/* BUTTON STYLING */
+.stButton>button {
+    background-color: #4A90E2 !important;
+    color: white !important;
+    border-radius: 10px !important;
+    padding: 0.6em 1.4em !important;
+    border: none !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease-in-out !important;
+}
+.stButton>button:hover {
+    background-color: #357ABD !important;
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+}
+
+/* --------------------------- */
+/* CARD SHADOWS (alerts) */
+div[data-testid="stAlert"] {
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+}
+
+/* --------------------------- */
+/* TEXTAREA STYLE */
+textarea {
+    background-color: #FFFFFF !important;
+    border-radius: 8px !important;
+    border: 1px solid #BBBBBB !important;
+    padding: 10px !important;
+}
+textarea:focus {
+    border-color: #4A90E2 !important;
+    box-shadow: 0px 0px 6px rgba(74,144,226,0.5);
+}
+</style>
+""", unsafe_allow_html=True)
+
+# -----------------------------
+# 3️⃣ Title and awareness message
+# -----------------------------
 st.markdown("# **📨 SMS Spam Classifier**")
 st.markdown("Enter your SMS message to find out whether it is SPAM or HAM.")
 
@@ -120,7 +114,7 @@ st.info(
 )
 
 # -----------------------------
-# 2️⃣ Load resources
+#  4️⃣Load resources
 # -----------------------------
 @st.cache_resource
 def load_tokenizer(path="tokenizer/tokenizer.pkl"):
@@ -135,7 +129,7 @@ tokenizer = load_tokenizer()
 model = load_lstm_model()
 
 # -----------------------------
-# 3️⃣ Sidebar for input
+# 5️⃣ Sidebar for input
 # -----------------------------
 with st.sidebar:
     st.header("💬 Enter your message")
@@ -144,7 +138,7 @@ with st.sidebar:
     predict_button = st.button("Predict")
 
 # -----------------------------
-# 4️⃣ Main area
+# 6️⃣  Main area
 # -----------------------------
 col1, col2 = st.columns([2, 1])
 
@@ -166,16 +160,16 @@ with col1:
             else:
                 st.success(f"Prediction: {pred_label}")
 
-            # Probability visual
-            st.progress(int(prob * 100))
-            st.info(f"Probability: {prob*100:.2f}%")
+            # Probability as bar
+            prob_percent = int(prob * 100)
+            st.markdown("**Probability of being SPAM:**")
+            st.progress(prob_percent)
+            st.markdown(f"<div style='color:#FF5733; font-weight:600;'>{prob*100:.2f}%</div>", unsafe_allow_html=True)
 
             # Original message
             st.markdown("**Evaluated message:**")
             st.write(user_input)
 
-with col2:
-    st.image("images/spam.jpg", use_container_width=True)
 
 # -----------------------------
 # 5️⃣ Footer
