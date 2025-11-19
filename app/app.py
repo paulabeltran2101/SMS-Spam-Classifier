@@ -152,8 +152,8 @@ if predict_button:
             st.success(f"Prediction: {pred_label}")
 
         # Probability bar
-        st.markdown("**Probability of being SPAM:**")
-        st.progress(int(prob * 100))
+        #st.markdown("**Probability of being SPAM:**")
+       # st.progress(int(prob * 100))
 
         # Original message
         st.markdown("**Evaluated message:**")
