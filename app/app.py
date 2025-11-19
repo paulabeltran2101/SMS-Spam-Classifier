@@ -7,6 +7,13 @@ from utils.preprocess_text import preprocess_text
 
 st.markdown("""
     <style>
+    div.block-container {
+    padding-top: 1rem !important;  /* Reduce space above title */
+    }
+
+    h1 {
+    margin-top: 0.2rem !important; /* Makes it even tighter */
+    }
 
         /* --------------------------- */
         /* 🔤 GLOBAL FONT (Montserrat) */
@@ -101,7 +108,7 @@ st.set_page_config(
 )
 
 st.markdown(""" <style> ... </style> """, unsafe_allow_html=True)
-st.markdown("## **📨 SMS Spam Classifier**")
+st.markdown("# **📨 SMS Spam Classifier**")
 st.markdown("Enter your SMS message to find out whether it is SPAM or HAM.")
 
 # Awareness message
@@ -168,7 +175,7 @@ with col1:
             st.write(user_input)
 
 with col2:
-    st.image("images/spam.jpg", caption="Spam Detection", use_container_width=True)
+    st.image("images/spam.jpg", use_container_width=True)
 
 # -----------------------------
 # 5️⃣ Footer
