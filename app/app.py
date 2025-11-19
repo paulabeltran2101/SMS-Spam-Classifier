@@ -31,7 +31,7 @@ html, body, [class*="css"] {
 /* 🎨 APP BACKGROUND - image with transparency */
 /* --------------------------- */
 .stApp {
-    background-image: url("images/spam_background.png");
+    /* background-image removed for testing */
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -154,7 +154,7 @@ if predict_button:
         # Probability bar
         st.markdown("**Probability of being SPAM:**")
         st.progress(int(prob * 100))
-        
+
         # Original message
         st.markdown("**Evaluated message:**")
         st.write(user_input)
