@@ -140,35 +140,33 @@ with st.sidebar:
 # -----------------------------
 # 6️⃣  Main area
 # -----------------------------
-col1, col2 = st.columns([2, 1])
 
-with col1:
-    if predict_button:
-        if user_input.strip() == "":
-            st.warning("Please enter a message to predict.")
+if predict_button:
+    if user_input.strip() == "":
+        st.warning("Please enter a message to predict.")
+    else:
+        # Preprocessing and padding
+        X_pad = preprocess_text([user_input], tokenizer, max_len=40)
+        
+        # Prediction
+        prob = model.predict(X_pad)[0][0]
+        pred_label = "SPAM" if prob > threshold else "HAM"
+
+        # Show result with colors
+        if pred_label == "SPAM":
+            st.error(f"Prediction: {pred_label}")
         else:
-            # Preprocessing and padding
-            X_pad = preprocess_text([user_input], tokenizer, max_len=40)
-            
-            # Prediction
-            prob = model.predict(X_pad)[0][0]
-            pred_label = "SPAM" if prob > threshold else "HAM"
+            st.success(f"Prediction: {pred_label}")
 
-            # Show result with colors
-            if pred_label == "SPAM":
-                st.error(f"Prediction: {pred_label}")
-            else:
-                st.success(f"Prediction: {pred_label}")
+        # Probability as bar
+        prob_percent = int(prob * 100)
+        st.markdown("**Probability of being SPAM:**")
+        st.progress(prob_percent)
+        st.markdown(f"<div style='color:#FF5733; font-weight:600;'>{prob*100:.2f}%</div>", unsafe_allow_html=True)
 
-            # Probability as bar
-            prob_percent = int(prob * 100)
-            st.markdown("**Probability of being SPAM:**")
-            st.progress(prob_percent)
-            st.markdown(f"<div style='color:#FF5733; font-weight:600;'>{prob*100:.2f}%</div>", unsafe_allow_html=True)
-
-            # Original message
-            st.markdown("**Evaluated message:**")
-            st.write(user_input)
+        # Original message
+        st.markdown("**Evaluated message:**")
+        st.write(user_input)
 
 
 # -----------------------------
