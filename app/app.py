@@ -31,7 +31,7 @@ html, body, [class*="css"] {
 /* 🎨 APP BACKGROUND - image with transparency */
 /* --------------------------- */
 .stApp {
-    background-image: url("images/spam.jpg");
+    background-image: url("images/spam_background.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
